@@ -1,6 +1,17 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import express from 'express';
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Backend is alive");
+});
+
+app.get("/api/health", (req, res) => {
+  res.send("Health OK");
+});
 
 const uploadDir = path.join(process.cwd(), 'uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });

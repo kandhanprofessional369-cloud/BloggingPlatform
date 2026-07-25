@@ -1,6 +1,16 @@
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
+import express from 'express';
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Backend is alive");
+});
+
+app.get("/api/health", (req, res) => {
+  res.send("Health OK");
+});
 
 export const protect = asyncHandler(async (req, res, next) => {
   let token;
