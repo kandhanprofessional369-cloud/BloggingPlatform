@@ -49,6 +49,14 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Blogging Platform API is running 🚀",
+    version: "1.0.0",
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
